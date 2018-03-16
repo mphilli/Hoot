@@ -51,8 +51,8 @@ PREFIX hoot: <http://mphilli.github.io/hoot#>
 
 SELECT ?word ?ipa WHERE {
       ?id rdfs:label ?word ; 
-             hoot:asIPA ?ipa .
-        FILTER regex(str(?ipa), "aʊl$")
+          hoot:asIPA ?ipa .
+      FILTER regex(str(?ipa), "aʊl$")
   }
 ```
 word | ipa |
@@ -157,7 +157,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 sparql = SPARQLWrapper("http://localhost:9999/blazegraph/sparql")
 sparql.setQuery("""
         PREFIX hoot: <http://mphilli.github.io/hoot#>
-        SELECT (strafter(str(?phone), str(hoot:)) as ?vowels) {
+        SELECT (strafter(str(?phone), str(hoot:)) as ?fricatives) {
                 ?phone hoot:hasPhoneType hoot:fricative.
         }""")
 sparql.setReturnFormat(JSON)
