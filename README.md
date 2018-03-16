@@ -1,6 +1,6 @@
 ## Hoot
 
-Hoot is an [OWL Ontology]() in RDF/XML format that describes English [phonetic](https://en.wikipedia.org/wiki/Phonetics) information as a domain of knowledge. Each word of English is present as an instance of the OWL class `Word`; each `Word` has a unique identifier (`IRI`), spelling (`rdfs:label`), and phonetic transcription (`hoot:asIPA`). There is also a `Phone` class, which identifies each attested phone in the English language. The English words and their phonetic transcriptions come from the [CMU Pronouncing Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict).
+Hoot is an [OWL Ontology](https://en.wikipedia.org/wiki/Web_Ontology_Language) in RDF/XML format that describes English [phonetic](https://en.wikipedia.org/wiki/Phonetics) information as a domain of knowledge. Each word of English is present as an instance of the OWL class `Word`; each `Word` has a unique identifier (`IRI`), spelling (`rdfs:label`), and phonetic transcription (`hoot:asIPA`). There is also a `Phone` class, which identifies each attested phone in the English language. The English words and their phonetic transcriptions come from the [CMU Pronouncing Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict).
 
 There are a number of implications for a graph-model-defined phonetic dictionary, and one of them is that we can leverage the [SPARQL](https://www.w3.org/TR/sparql11-query/) RDF query language to find interesting phonetic facts and relationships. 
 
@@ -35,13 +35,13 @@ u |
 ```SPARQL
 PREFIX hoot: <http://mphilli.github.io/hoot#>
 
-SELECT ?word ?IRI ?phones WHERE {
+SELECT ?word ?IRI ?ipa WHERE {
       ?IRI rdfs:label ?word ; 
-             hoot:asIPA ?phones .
+             hoot:asIPA ?ipa .
         FILTER regex(str(?word), "^hoot$")
   }
 ```
-word | IRI | phones
+word | IRI | ipa
 --- | --- | ---
 hoot | <http://mphilli.github.io/hoot#w055894> | hut
 
@@ -133,7 +133,7 @@ These are just a few examples of the things we can do with Hoot. What we could d
   * Add more information to words at different linguistic levels beyond phonetics (e.g., syntax & semantics)
   	* This would enable us to find other, even more complex relations between words. 
   * Add more languages
-  	* This would provide us with a knowledge base to discover interesting and complex relationships cross-linguistically, and allow us to perform all kinds of typological-analysis in a semantically-informed way. 
+  	* This would provide us with a knowledge base to discover interesting and complex relationships cross-linguistically, and allow us to perform all kinds of typological analysis in a semantically-informed way. 
   	
 (Keep in mind that [other linguistic ontologies](http://linguistics-ontology.org/info/about) exist, although the goals may be different). 
   
