@@ -163,9 +163,9 @@ sparql.setQuery("""
 sparql.setReturnFormat(JSON)
 results = sparql.query().convert()
 if results:
-    term_id_pairs = [(r["vowels"]["value"])
+    vowels = [(r["vowels"]["value"])
                      for r in results["results"]["bindings"]]
-    print(term_id_pairs)
+    print(str(vowels))
     # prints: ['ð', 'f', 's', 'ʃ', 'v', 'z', 'ʒ', 'θ']
 ```
   
